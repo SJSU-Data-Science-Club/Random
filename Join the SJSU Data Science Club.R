@@ -60,7 +60,8 @@ train <- rbind(train_0, train_1, train_2, train_3, train_4, train_5, train_6, tr
 which(apply(train, c(1, 2), is.na) == T, arr.ind = T)
 #Looks like row 1114 is bad
 
-train <- train[1114, -c(1, 32)]
+train <- train[,-c(1, 32)]
+
 write_csv(train, "Join_The_SJSU_Data_Science_Club.csv")
 
 
