@@ -62,6 +62,8 @@ which(apply(train, c(1, 2), is.na) == T, arr.ind = T)
 
 train <- train[,-c(1, 32)]
 
+colnames(train) <- c(paste("V", seq(1, 254), sep = ""), "Label")
+
 write_csv(train, "Join_The_SJSU_Data_Science_Club.csv")
 
 
