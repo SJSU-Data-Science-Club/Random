@@ -12,8 +12,8 @@ import base64, datetime
 
 
 reddit = praw.Reddit(user_agent='Comment Extraction (by /u/USERNAME)',
-                     client_id='b8unlbKK1rWOow', 
-                     client_secret='FuFwla268qevA5Ju1MgRPs2Sihg')
+                     client_id='SI8pN3DSbt0zor', 
+                     client_secret='xaxkj7HNh8kwg8e5t4m6KvSrbTI')
 
 
 
@@ -45,9 +45,6 @@ for post in posts:
         print(comment.body)
         
 
-for comment in comments:
-    test = (comment.body)
-    
     
 submission.comments.replace_more(limit=None)
 comment_queue = submission.comments[:]  # Seed with top-level
