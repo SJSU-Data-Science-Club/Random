@@ -12,8 +12,8 @@ import base64, datetime
 
 
 reddit = praw.Reddit(user_agent='Comment Extraction (by /u/USERNAME)',
-                     client_id='SI8pN3DSbt0zor', 
-                     client_secret='xaxkj7HNh8kwg8e5t4m6KvSrbTI')
+                     client_id='b8unlbKK1rWOow', 
+                     client_secret='FuFwla268qevA5Ju1MgRPs2Sihg')
 
 
 
@@ -27,9 +27,9 @@ awww = reddit.subreddit('aww')
 
 
 ## Getting the top x posts
-posts = awww.hot(limit = 5)
+posts = awww.top('day',limit = 5)
 for post in posts:
-    print(post.title)
+    print(post.id)
 
 
 
@@ -45,10 +45,15 @@ for post in posts:
         print(comment.body)
         
 
-    
-submission.comments.replace_more(limit=None)
-comment_queue = submission.comments[:]  # Seed with top-level
-while comment_queue:
-    comment = comment_queue.pop(0)
-    print(comment.body)
-    comment_queue.extend(comment.replies)
+def comment_extractor(submission):
+    goalie = []    
+    submission.comments.replace_more(limit=None)
+    comment_queue = submission.comments[:]  # Seed with top-level
+    while comment_queue:
+        comment = comment_queue.pop(0)
+        goalie.append(comment.body)
+        comment_queue.extend(comment.replies)
+
+
+
+comment_extractor()
